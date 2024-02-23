@@ -3,8 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
+
+
+
+# define a function that takes 3 parameters entered by the user from the keyboard
 def plot_trajectory(S, H, H0):
-    # General and design parameters
+    # constants
     g = 9.81                                # acceleration of gravity
     alpha = np.pi / 4                       # throw angle in radians (the best angle is 45 degrees)
 
@@ -12,6 +16,7 @@ def plot_trajectory(S, H, H0):
     V0 = math.sqrt(g * S**2 / (2 * (np.cos(alpha))**2 * (S * np.tan(alpha) + H0 - H)))
     Hmax = H0 + V0**2 * (np.sin(alpha))**2 / (2 * g)
 
+    # create a new figure and a set of axes
     fig, ax = plt.subplots()
 
     # Create an array of time values
@@ -27,19 +32,22 @@ def plot_trajectory(S, H, H0):
     # Starting point position
     redDot, = plt.plot([0], [H0], 'ro')
 
-    # Arrays for storing previous point positions
+    # Arrays for storing previous point positions in order to draw the trajectory
     previous_x = []
     previous_y = []
 
     # Add a target point
     fixed_point_x = S
     fixed_point_y = H
+
+    # create a plot
     plt.scatter(fixed_point_x, fixed_point_y, color='blue', marker='o')
 
-    # Add text to display V0 and Hmax
+    # Add text to display: coordinates, V0 and Hmax
     ax.text(0.02, 0.9, f'Our coordinates: x = 0 m, y = {H0} m\nTarget coordinates: X = {S} m, Y = {H} m\nInitial speed: V0 = {V0:.2f} m/s\nMaximal height: Hmax = {Hmax:.2f} m', 
             horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
 
+    # define a function for animation
     def animate(i):
         nonlocal previous_x, previous_y
         
@@ -67,13 +75,16 @@ def plot_trajectory(S, H, H0):
     ani = animation.FuncAnimation(fig, animate, frames=np.arange(0.0, S, S/300), 
                                           interval=100, blit=True, repeat=False)
 
+    # open and display a window with a plot
     plt.show()
 
-# Input parameters from user
+
+
+
+# Application example
 S = float(input("Enter distance to the target (S): "))
 H = float(input("Enter target height (H): "))
 H0 = float(input("Enter initial height (H0): "))
 
-# Plot trajectory
+# Call the function
 plot_trajectory(S, H, H0)
-
