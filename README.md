@@ -5,4 +5,6 @@ The file **Ballistic_round** contains the code of the program that performs the 
 **Please note that this program was created solely for educational purposes in order to understand and demonstrate the capabilities of the Python matplotlib library. The author of this program exclusively supports world peace!** 😊🤝🏻
 
 ## Some physics
-$\sqrt(3)$
+
+According to the laws of physics, the free movement of a body in the gravitational field of the earth can be described using kinematics equations:
+$x(t) = x_0 + v_0y\cos\alpha,$ and $y(t) = y_0 + v_0y\sin\alpha + \frac{at^2}{2}$.
