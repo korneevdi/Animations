@@ -27,3 +27,15 @@ $v_0 = \frac{S}{\cos\alpha}\cdot\sqrt{\frac{g}{2(S\tan\alpha+H_0-H)}}$,
 $T = \sqrt{\frac{2(S\tan\alpha+H_0-H)}{g}}$.
 
 The formulas turn out to be cumbersome, but Python doesn't care :)
+
+We can also solve the system of equations for $x(t)$ and $y(t)$ a little differently, and then we get the dependence $y(x)$, that is, the equation for the projectile flight path:
+
+$y(x) = H_0 + x\tan\alpha - \frac{gx^2}{2v_0^2\cos^2\alpha}$.
+
+Now you can calculate the derivative $y'(x)$ of this function and equate it to zero to find the maximum height of the trajectory:
+
+$y_{max} = H_0 + \frac{v_0^2\sin^2\alpha}{2g}$.
+
+We need this value so that we can automatically adjust the size of the window in which the animation will be shown. So, now you can start programming!
+
+## Code development
