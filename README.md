@@ -28,7 +28,7 @@ $T = \sqrt{\frac{2(S\tan\alpha+H_0-H)}{g}}$.
 
 The formulas turn out to be cumbersome, but Python doesn't care :)
 
-We can also solve the system of equations for $x(t)$ and $y(t)$ a little differently, and then we get the dependence $y(x)$, that is, the equation for the projectile flight path:
+We can also solve the system of equations for $x(t)$ and $y(t)$ a little differently, and then we get the function $y(x)$, that is, the equation for the projectile flight trajectory:
 
 $y(x) = H_0 + x\tan\alpha - \frac{gx^2}{2v_0^2\cos^2\alpha}$.
 
