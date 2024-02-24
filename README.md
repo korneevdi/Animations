@@ -7,4 +7,7 @@ The file **Ballistic_round** contains the code of the program that performs the 
 ## Some physics
 
 According to the laws of physics, the free movement of a body in the gravitational field of the earth can be described using kinematics equations:
-$x(t) = x_0 + v_0y\cos\alpha,$ and $y(t) = y_0 + v_0y\sin\alpha + \frac{at^2}{2}$.
+
+$x(t) = x_0 + v_0y\cos\alpha$,
+
+$y(t) = y_0 + v_0y\sin\alpha + \frac{at^2}{2}$.
