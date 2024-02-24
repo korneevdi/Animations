@@ -8,6 +8,8 @@ The file **Ballistic_round** contains the code of the program that performs the 
 
 According to the laws of physics, the free movement of a body in the gravitational field of the earth can be described using kinematics equations:
 
-$x(t) = x_0 + v_0y\cos\alpha$,
+$x(t) = x_0 + v_0t\cos\alpha$,
 
-$y(t) = y_0 + v_0y\sin\alpha + \frac{at^2}{2}$.
+$y(t) = y_0 + v_0t\sin\alpha + \frac{at^2}{2}$,
+
+where $x_0$ and $y_0$ are initial coordinates, $v_0$ is initial speed, $\alpha$ is the angle at which the body was thrown, $t$ is time and $a$ is acceleration. In our case, this acceleration $a = -g$, because it is the downward gravity acceleration.
