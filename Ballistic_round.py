@@ -4,10 +4,12 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 
-
-
 # define a function that takes 3 parameters entered by the user from the keyboard
-def plot_trajectory(S, H, H0):
+def plot_trajectory():
+    S = float(input("Enter distance to the target in meters: "))
+    H = float(input("Enter target height in meters: "))
+    H0 = float(input("Enter initial height in meters: "))
+    
     # constants
     g = 9.81                                # acceleration of gravity
     alpha = np.pi / 4                       # throw angle in radians (the best angle is 45 degrees)
@@ -23,8 +25,8 @@ def plot_trajectory(S, H, H0):
     t = np.arange(0.0, 1, 0.001)
 
     # Draw a line along which the point moves (this will be the trajectory of the point)
-    s = t
-    l, = plt.plot(t, s)
+    #s = t
+    l, = plt.plot(t, t)
 
     # Set the axes limits
     ax.axis([0, S * 1.2, 0, Hmax * 1.4])
@@ -44,7 +46,8 @@ def plot_trajectory(S, H, H0):
     plt.scatter(fixed_point_x, fixed_point_y, color='blue', marker='o')
 
     # Add text to display: coordinates, V0 and Hmax
-    ax.text(0.02, 0.9, f'Our coordinates: x = 0 m, y = {H0} m\nTarget coordinates: X = {S} m, Y = {H} m\nInitial speed: V0 = {V0:.2f} m/s\nMaximal height: Hmax = {Hmax:.2f} m', 
+    ax.text(0.02, 0.9,
+            f'Our coordinates: x = 0 m, y = {H0} m\nTarget coordinates: X = {S} m, Y = {H} m\nInitial speed: V0 = {V0:.2f} m/s\nMaximal height: Hmax = {Hmax:.2f} m', 
             horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
 
     # define a function for animation
@@ -79,12 +82,5 @@ def plot_trajectory(S, H, H0):
     plt.show()
 
 
-
-
-# Application example
-S = float(input("Enter distance to the target (S): "))
-H = float(input("Enter target height (H): "))
-H0 = float(input("Enter initial height (H0): "))
-
-# Call the function
-plot_trajectory(S, H, H0)
+# Application example: call the function
+plot_trajectory()
