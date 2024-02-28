@@ -39,3 +39,7 @@ $y_{max} = H_0 + \frac{v_0^2\sin^2\alpha}{2g}$.
 We need this value so that we can automatically adjust the size of the window in which the animation will be shown. So, now you can start programming!
 
 ## Code development
+
+The function first asks the user for three input parameters: target distance S, target height H, and launcher height H0. This allows you to accurately calculate the trajectory of movement, given that the starting angle is $45^{\circ}$ (this is the optimal angle). Next, using constants, we calculate the initial speed of the projectile at the moment of launch, as well as the maximum height of its trajectory. The value of the initial speed will be displayed on the screen for the user, and we need the maximum height in order to optimally select the size of the panel where the animation will be shown (see below).
+
+Next, the *plt.subplots()* method creates a new figure and a set of axes. In this case, we don't specify any arguments, so the method creates one figure with one set of axes. If you specify arguments (for example, *plt.subplots(nrows=2, ncols=2)*), a grid of figures will be created with the specified number of rows and columns. The **fig** variable contains a figure object, and the **ax** variable contains an axes set object. This is done using the unpacking mechanism in Python.
