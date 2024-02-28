@@ -48,4 +48,20 @@ We then create an array **t** of time values, starting at 0.0 and ending with a 
 
 In the line *ax.axis([0, S * 1.2, 0, Hmax * 1.4])* we set the axes values. This is where we use the distance **S** to the target and the maximum height **Hmax** of the trajectory so that the axes are automatically scaled depending on the values ​​entered by the user.
 
-Next we create a variable, redDot, which refers to the line object representing the red dot on the graph (we again use a comma for this). The *plt.plot([0], [H0], 'ro')* function creates a point on the plot with coordinates *[0, H0]*, and the **'ro'** parameter specifies the use of red ('r') for the points and the shape 'o' (round) to display each point.
+Next we create a variable, redDot, which refers to the line object representing the red dot on the graph (we again use a comma for this). The *plt.plot([0], [H0], 'ro')* function creates a point on the plot with coordinates *[0, H0]*, and the **'ro'** parameter specifies the use of **'r'** (red) for the points and the shape **'o'** (round) to display each point.
+
+Next, we create arrays to store all the previous coordinates of the moving point. This will give us the opportunity to draw the trajectory. We then set the target coordinates and draw a stationary blue dot on the panel using the *plt.scatter()* method. This point represents the target.
+
+The *ax.text()* function allows us to print text directly onto the panel where the animation is shown. The first two parameters set the left and top indentation, then the text is specified, which is then aligned horizontally and vertically. The **transform=ax.transAxes** parameter determines how the coordinate system will be transformed to position the text. The value **ax.transAxes** specifies the use of relative axes coordinates (0-1) instead of absolute data coordinates. Thus, coordinates (0,0) correspond to the lower left corner of the drawing area, and (1,1) correspond to the upper right corner. This allows you to easily control the placement of text regardless of the size of the graph.
+
+The *animate()* function is responsible for animating the movement of a point along a trajectory. The **nonlocal** keyword means that the variables **previous_x** and **previous_y** will be used from the enclosing function (in this case, the function that creates the graph and calls *animate()*). The line **x = i** sets the current value of **x** to the value of **i**. In this case, **i** represents the current frame index. Using the value of **i**, the value of **y** is calculated. The line **redDot.set_data([x], [y])** sets new coordinates for the red dot in the current animation frame, these coordinates are added to the arrays of previous values so that we can draw the path using the line **l.set_data( previous_x, previous_y)**. If the **x** coordinate reaches a certain value, then the animation stops. Finally, the function returns the updated point and line objects to update the animation.
+
+The *animation.FuncAnimation()* function from the **matplotlib.animation** library creates an animation. This function in this case takes 6 parameters:
+1) **fig**, a drawing object to which the animation will be attached.
+2) **animate**, a function that will be called on every animation frame to update the content.
+3) **frames**, a sequence of values that will be used as an argument **i** to the *animate* function. In this case, it is an array of values from 0 to S with a step of S/300, defining the position of the point on the trajectory during the animation. The last option here allows us to automatically adjust the speed of the dot depending on the distance to the target, so that it doesn't move too fast or too slow.
+4) **interval**, time interval (in milliseconds) between animation frames.
+5) **blit**, this parameter specifies whether the *blitting* technique will be used to speed up the animation. If set to **True**, only changes between frames will be updated, which may improve performance.
+6) **repeat**, this parameter determines whether the animation will be repeated. If set to **False**, the animation will end after one pass through all frames.
+
+The *show()* function displays a window with current graphs.
